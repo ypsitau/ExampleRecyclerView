@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+
+	<TextView
+		android:id="@+id/textView_index"
+		android:layout_width="40dp"
+		android:layout_height="wrap_content"
+		android:text="1"
+		android:gravity="center_horizontal"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toStartOf="@+id/textView_fullName" />
+
+	<TextView
+		android:id="@+id/textView_fullName"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:text="Sonja Collier"
+		app:layout_constraintHorizontal_weight="1"
+		app:layout_constraintTop_toTopOf="@+id/textView_index"
+		app:layout_constraintBottom_toBottomOf="@+id/textView_index"
+		app:layout_constraintStart_toEndOf="@+id/textView_index"
+		app:layout_constraintEnd_toStartOf="@+id/textView_firstName" />
+
+	<TextView
+		android:id="@+id/textView_firstName"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:text="Sonja"
+		app:layout_constraintHorizontal_weight="1"
+		app:layout_constraintTop_toTopOf="@+id/textView_fullName"
+		app:layout_constraintBottom_toTopOf="@+id/textView_lastName"
+		app:layout_constraintStart_toEndOf="@+id/textView_fullName"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<TextView
+		android:id="@+id/textView_lastName"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:text="Collier"
+		app:layout_constraintHorizontal_weight="1"
+		app:layout_constraintTop_toBottomOf="@+id/textView_firstName"
+		app:layout_constraintBottom_toBottomOf="@+id/textView_fullName"
+		app:layout_constraintStart_toStartOf="@+id/textView_firstName"
+		app:layout_constraintEnd_toEndOf="@+id/textView_firstName" />
+
+</android.support.constraint.ConstraintLayout>
