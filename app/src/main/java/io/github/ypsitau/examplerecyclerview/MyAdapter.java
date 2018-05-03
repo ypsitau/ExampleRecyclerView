@@ -11,18 +11,25 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 	private String[] dataSet;
-	public static class ViewHolder extends RecyclerView.ViewHolder {
+	public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 		public TextView textView_index;
 		public TextView textView_fullName;
 		public TextView textView_firstName;
 		public TextView textView_lastName;
-		public ViewHolder(View view) {
-			super(view);
-			this.textView_index = view.findViewById(R.id.textView_index);
-			this.textView_fullName = view.findViewById(R.id.textView_fullName);
-			this.textView_firstName = view.findViewById(R.id.textView_firstName);
-			this.textView_lastName = view.findViewById(R.id.textView_lastName);
+		public ViewHolder(View viewRoot) {
+			super(viewRoot);
+			this.textView_index = viewRoot.findViewById(R.id.textView_index);
+			this.textView_fullName = viewRoot.findViewById(R.id.textView_fullName);
+			this.textView_firstName = viewRoot.findViewById(R.id.textView_firstName);
+			this.textView_lastName = viewRoot.findViewById(R.id.textView_lastName);
+			viewRoot.setOnClickListener(this);
 		}
+
+		@Override
+		public void onClick(View view) {
+			Util.Printf("%d\n", this.getAdapterPosition() + 1);
+		}
+
 	}
 	public MyAdapter(String[] dataSet) {
 		this.dataSet = dataSet;
