@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class Adapter_NameList extends RecyclerView.Adapter<Adapter_NameList.ViewHolder> {
+public class NameListAdapter extends RecyclerView.Adapter<NameListAdapter.ViewHolder> {
 	private String[] fullNames;
 	public static class ViewHolder extends RecyclerView.ViewHolder {
 		public TextView textView_index;
@@ -28,7 +28,7 @@ public class Adapter_NameList extends RecyclerView.Adapter<Adapter_NameList.View
 			});
 		}
 	}
-	public Adapter_NameList(String[] fullNames) {
+	public NameListAdapter(String[] fullNames) {
 		this.fullNames = fullNames;
 	}
 
@@ -36,7 +36,7 @@ public class Adapter_NameList extends RecyclerView.Adapter<Adapter_NameList.View
 	@Override
 	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		return new ViewHolder(LayoutInflater.from(parent.getContext())
-				.inflate(R.layout.adapter_name_list, parent, false));
+				.inflate(R.layout.name_list_adapter, parent, false));
 	}
 
 	@Override
