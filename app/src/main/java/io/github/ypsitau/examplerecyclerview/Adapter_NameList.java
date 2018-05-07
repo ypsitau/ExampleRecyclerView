@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-	private String[] dataSet;
-	public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class Adapter_NameList extends RecyclerView.Adapter<Adapter_NameList.ViewHolder> {
+	private String[] fullNames;
+	public static class ViewHolder extends RecyclerView.ViewHolder {
 		public TextView textView_index;
 		public TextView textView_fullName;
 		public TextView textView_firstName;
@@ -20,29 +20,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 			this.textView_fullName = viewRoot.findViewById(R.id.textView_fullName);
 			this.textView_firstName = viewRoot.findViewById(R.id.textView_firstName);
 			this.textView_lastName = viewRoot.findViewById(R.id.textView_lastName);
-			viewRoot.setOnClickListener(this);
+			this.textView_fullName.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Util.Printf("clicked: %s\n", textView_fullName.getText());
+				}
+			});
 		}
-
-		@Override
-		public void onClick(View view) {
-			Util.Printf("%d\n", this.getAdapterPosition() + 1);
-		}
-
 	}
-	public MyAdapter(String[] dataSet) {
-		this.dataSet = dataSet;
+	public Adapter_NameList(String[] fullNames) {
+		this.fullNames = fullNames;
 	}
 
 	@NonNull
 	@Override
 	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		return new ViewHolder(LayoutInflater.from(parent.getContext())
-				.inflate(R.layout.my_adapter_view_holder, parent, false));
+				.inflate(R.layout.adapter_name_list, parent, false));
 	}
 
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-		String fullName = dataSet[position];
+		String fullName = fullNames[position];
 		String[] fields = fullName.split("\\s");
 		String firstName = "", lastName = "";
 		holder.textView_index.setText(String.format("%d", position + 1));
@@ -53,6 +52,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 	@Override
 	public int getItemCount() {
-		return dataSet.length;
+		return fullNames.length;
 	}
 }
