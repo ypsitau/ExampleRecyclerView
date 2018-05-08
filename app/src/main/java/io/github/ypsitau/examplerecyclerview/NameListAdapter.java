@@ -36,7 +36,7 @@ public class NameListAdapter extends RecyclerView.Adapter<NameListAdapter.ViewHo
 	@Override
 	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		return new ViewHolder(LayoutInflater.from(parent.getContext())
-				.inflate(R.layout.name_list_adapter, parent, false));
+				.inflate(R.layout.adapter_name_list, parent, false));
 	}
 
 	@Override
