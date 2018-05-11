@@ -1,7 +1,7 @@
 <resources>
 	<string name="app_name">ExampleRecyclerView</string>
-	<string name="Two_columns_Recycler_View">Two-columns Recycler View</string>
-	<string name="One_column_Recycler_View">One-column Recycler View</string>
+	<string name="One_column">One-column</string>
+	<string name="Two_columns">Two-columns</string>
 	<string name="Next_Activity">Next Activity</string>
 	<string name="Prev_Activity">Prev Activity</string>
 	<string-array name="fullNames">

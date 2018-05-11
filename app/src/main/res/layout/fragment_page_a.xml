@@ -7,24 +7,13 @@
 	tools:context=".MainActivity$PageAFragment"
 	android:background="#cccccc">
 
-	<TextView
-		android:id="@+id/textView_title"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:background="#cccccc"
-		android:text="@string/One_column_Recycler_View"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintEnd_toEndOf="parent" />
-
 	<android.support.v7.widget.RecyclerView
 		android:id="@+id/recyclerView"
 		android:scrollbars="vertical"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
 		android:background="#ffffff"
-		app:layout_constraintTop_toBottomOf="@+id/textView_title"
+		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintEnd_toEndOf="parent" />

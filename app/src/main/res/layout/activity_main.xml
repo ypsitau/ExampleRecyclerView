@@ -6,13 +6,23 @@
 	android:layout_height="match_parent"
 	tools:context=".MainActivity"
 	android:background="#cccccc">
+
+	<android.support.design.widget.TabLayout
+		android:id="@+id/tabLayout"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toTopOf="@+id/viewPager"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
 	<android.support.v4.view.ViewPager
 		android:id="@+id/viewPager"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
 		android:background="#ffffff"
 		app:layout_constraintVertical_weight="4"
-		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/tabLayout"
 		app:layout_constraintBottom_toTopOf="@+id/editText_log"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintEnd_toEndOf="parent" />
