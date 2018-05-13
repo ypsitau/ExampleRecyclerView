@@ -23,7 +23,7 @@ public class NameListAdapter extends RecyclerView.Adapter<NameListAdapter.ViewHo
 			this.textView_fullName.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					Util.Printf("clicked: %s\n", textView_fullName.getText());
+					App.Printf("clicked: %s\n", textView_fullName.getText());
 				}
 			});
 		}

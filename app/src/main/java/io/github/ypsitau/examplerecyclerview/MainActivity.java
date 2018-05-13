@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 		});
 		TabLayout tabLayout = findViewById(R.id.tabLayout);
 		tabLayout.setupWithViewPager(viewPager);
-		Util.init(this, (EditText) findViewById(R.id.editText_log));
+		App.setLogEditText((EditText)findViewById(R.id.editText_log), true);
 	}
 	public static abstract class FragmentFactory {
 		public final int resIdTitle;

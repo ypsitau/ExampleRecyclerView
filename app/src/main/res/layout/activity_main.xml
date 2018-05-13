@@ -11,6 +11,7 @@
 		android:id="@+id/tabLayout"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
+		app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
 		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintBottom_toTopOf="@+id/viewPager"
 		app:layout_constraintStart_toStartOf="parent"
