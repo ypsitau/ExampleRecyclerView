@@ -13,6 +13,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,11 +59,31 @@ public class MainActivity extends AppCompatActivity {
 		}
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View viewRoot = inflater.inflate(R.layout.fragment_page_a, container, false);
+			View viewRoot = inflater.inflate(R.layout.fragment_page, container, false);
 			final RecyclerView recyclerView = viewRoot.findViewById(R.id.recyclerView);
 			//recyclerView.setHasFixedSize(true);
 			recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext()));
 			recyclerView.setAdapter(new NameListAdapter(getResources().getStringArray(R.array.fullNames)));
+			final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(
+					new ItemTouchHelper.SimpleCallback(
+							ItemTouchHelper.UP | ItemTouchHelper.DOWN,
+							ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+						public boolean onMove(RecyclerView recyclerView,
+											  RecyclerView.ViewHolder viewHolder,
+											  RecyclerView.ViewHolder viewHolderTgt) {
+							final int posFrom = viewHolder.getAdapterPosition();
+							final int posTo = viewHolderTgt.getAdapterPosition();
+							recyclerView.getAdapter().notifyItemMoved(posFrom, posTo);
+							return true; // true if moved, false otherwise
+						}
+						public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+							final int fromPos = viewHolder.getAdapterPosition();
+							//dataset.remove(fromPos);
+							recyclerView.getAdapter().notifyItemRemoved(fromPos);
+						}
+
+					});
+			itemTouchHelper.attachToRecyclerView(recyclerView);
 			return viewRoot;
 		}
 	};
@@ -74,11 +95,30 @@ public class MainActivity extends AppCompatActivity {
 		}
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-			View viewRoot = inflater.inflate(R.layout.fragment_page_b, container, false);
+			View viewRoot = inflater.inflate(R.layout.fragment_page, container, false);
 			final RecyclerView recyclerView = viewRoot.findViewById(R.id.recyclerView);
 			//recyclerView.setHasFixedSize(true);
 			recyclerView.setLayoutManager(new GridLayoutManager(inflater.getContext(), 2));
 			recyclerView.setAdapter(new NameListAdapter(getResources().getStringArray(R.array.fullNames)));
+			final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(
+					new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP |
+							ItemTouchHelper.DOWN, ItemTouchHelper.LEFT) {
+						public boolean onMove(RecyclerView recyclerView,
+											  RecyclerView.ViewHolder viewHolder,
+											  RecyclerView.ViewHolder viewHolderTgt) {
+							final int posFrom = viewHolder.getAdapterPosition();
+							final int posTo = viewHolderTgt.getAdapterPosition();
+							recyclerView.getAdapter().notifyItemMoved(posFrom, posTo);
+							return true; // true if moved, false otherwise
+						}
+						public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+							final int fromPos = viewHolder.getAdapterPosition();
+							//dataset.remove(fromPos);
+							recyclerView.getAdapter().notifyItemRemoved(fromPos);
+						}
+
+					});
+			itemTouchHelper.attachToRecyclerView(recyclerView);
 			return viewRoot;
 		}
 	};
